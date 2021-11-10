@@ -1,3 +1,4 @@
+from pydantic import fields
 from router import router
 import views
 from model.player import Player, player_manager
@@ -54,9 +55,15 @@ def tournament_list():
     views.ListView("Tournament", tournament_manager.all()).display()
     router.navigate("/tournaments")
     
-def pending_tournament():
+def pending_tournament(): #Boucler tant que c'est pas bon 
     print("In the pending tournaments")
-    views.ListView("Tournament", tournament_manager.search("end_date")).display()
+    form_data = views.Form("Tournoi à reprendre", fields=[("id","id",int)]).display()
+    tournament = tournament_manager.search(form_data["id"])
+    #Moyen de savoir si le tournoi est terminé ou peut etre continué
+    
+    #Gérer TinyDB
+    
+
     # views.PendingTournament()
     router.navigate("/tournaments")
 

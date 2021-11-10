@@ -1,4 +1,5 @@
 import json
+from typing import List
 
 
 class Manager :
@@ -21,7 +22,7 @@ class Manager :
 
     def search(self,key):
         # print(self.items)
-        return dict(filter(key,self.items)).values()
+        return list(filter(key,self.items.values()))
 
     def search_by_id(self,id):
         return self.items[id]

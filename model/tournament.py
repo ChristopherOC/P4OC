@@ -1,6 +1,5 @@
 import datetime
 from typing import List
-
 from manager import Manager
 from pydantic import BaseModel, validator
 
