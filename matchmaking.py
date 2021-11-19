@@ -10,7 +10,6 @@ class Matchmaking:
         self.players = players
         self.tournament_matchs = []
         self.tournament_scores = []
-       
     
     def gen_turn_one(self):
        
@@ -52,8 +51,8 @@ class Matchmaking:
             self.tournament_matchs.append(match)
             turn_matchs.append(match)
         return turn_matchs
+
         
-    
     def find_opponent(self, turn_players, p1):
         for p2 in turn_players: 
 

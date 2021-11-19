@@ -1,0 +1,70 @@
+[
+    {
+       "name":"Bataille",
+       "location":"Paris",
+       "date":"2021-4-06 10:00",
+       "rounds":[
+          {
+             "name":"round1",
+             "begin_date":"2021-04-01 10:00",
+             "end_date":"2021-05-01 10:10",
+             "matchs":[
+                {
+                   "id_player_1":1,
+                   "id_player_2":2
+                },
+                {
+                   "score_player_1 ":1,
+                   "score_player_2":2
+                }
+             ]
+          }
+       ],
+       "players":[
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+       ],
+       "id":1,
+       "end_date": null
+    },
+    {
+       "name":"Bataille",
+       "location":"Paris",
+       "date":"2021-4-06 10:00",
+       "rounds":[
+          {
+             "name":"round1",
+             "begin_date":"2021-04-01 10:00",
+             "end_date":"2021-05-01 10:10",
+             "matchs":[
+                {
+                   "id_player_1":1,
+                   "id_player_2":2
+                },
+                {
+                   "score_player_1 ":1,
+                   "score_player_2":2
+                }
+             ]
+          }
+       ],
+       "players":[
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+       ],
+       "id":2,
+       "end_date":"2021-05-01 10:10"
+    }
+ ]

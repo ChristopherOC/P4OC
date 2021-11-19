@@ -1,33 +1,43 @@
 import json
 from typing import List
 
+from tinydb import TinyDB, table
+from tinydb.table import Document
 
 class Manager :
   
     def __init__(self, item_type):
         self.items = {}
         self.item_type = item_type
+        db = TinyDB("db.json", sort_keys=True, indent=4)
+        self.table = db.table(type.__name__.lower() + "s")
 
-
-
-    def from_json(self, path):
-        with open(path) as file :
-            for item_data in json.loads(file.read()):
-                self.create(**item_data)
+    # def from_json(self, path):
+    #     with open(path) as file :
+    #         for item_data in json.loads(file.read()):
+    #             self.create(**item_data)
                 
     def create(self,**kwargs):
         item = self.item_type(**kwargs)
         self.items[item.id] = item
         return item
 
-    def search(self,key):
+    def search(self,filter_key = lambda x: x, sort_key = lambda x: x):
         # print(self.items)
-        return list(filter(key,self.items.values()))
+        return list(sorted(filter(filter_key,self.items.values()),key = sort_key))
+
 
     def search_by_id(self,id):
         return self.items[id]
 
-    # def search_by_name(self,lastname):
+    def all(self):
+        return list(self.items.values())
+  
+    def save_item(self, id):
+        item = self.find_by_id(id)
+        self.table.upsert(Document(json.loads(item.json()), doc_id=id))   
+
+   # def search_by_name(self,lastname):
     #     return self.items[lastname]
     # def search_by_score(self,rank):
     #     score = []
@@ -35,7 +45,3 @@ class Manager :
 
     # def search_by_rank(self):
     #     return sorted(list(self.items.values()), key=lambda x: x.rank)
-
-    def all(self):
-        return list(self.items.values())
-        

@@ -75,6 +75,5 @@ class Player(BaseModel) :
     def __str__(self) -> str:
         return f'{self.firstname},{self.lastname},{self.rank}'
 
-player_manager= Manager(Player)
 
 

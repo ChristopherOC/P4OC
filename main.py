@@ -1,11 +1,10 @@
 from controllers import *
-from model.player import player_manager
-from model.tournament import tournament_manager
+from model.tournament import tournament_manager as tm
 from router import router
 
 
-player_manager.from_json('ChessPlayers.json')
-tournament_manager.from_json('tournament.json')
+# player_manager.from_json('ChessPlayers.json')
+# tournament_manager.from_json('tournament.json')
 # print(player_manager.all())
 # controllers.main_controller()
 # controllers.players_controller()

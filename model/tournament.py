@@ -3,7 +3,7 @@ from typing import List
 from manager import Manager
 from pydantic import BaseModel, validator
 
-from model.player import player_manager as pm
+from player_manager import player_manager as pm
 from model.round import Round
 
 
@@ -76,7 +76,7 @@ class Tournament(BaseModel):
             raise ValueError('wrong id')
         return value
 
-tournament_manager = Manager(Tournament)     
+    
 # tourney= Tournament(name="Feraille", location="Tours", date="2021-6-3")
 # print(tourney.json())
 

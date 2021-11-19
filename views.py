@@ -1,10 +1,7 @@
-import json
-
-from model.tournament import Tournament, tournament_manager
-import os
 from typing import List, Tuple, Any
 import enum
-from model.player import Player, player_manager
+from model.player import Player
+
 
 
 
@@ -137,9 +134,7 @@ class PendingTournament(Form):
     def __init__(self):
         super().__init__(title = "Reprise du tournoi")
         
-        j = json.dumps()
-        with open('tournament.json','w') as f:  
-            f.write(j)
+       
 
 
 
