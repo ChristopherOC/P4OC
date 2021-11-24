@@ -1,5 +1,5 @@
 from controllers import *
-from model.tournament import tournament_manager as tm
+from tournament_manager import tournament_manager as tm
 from router import router
 
 

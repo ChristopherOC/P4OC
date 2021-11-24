@@ -1,7 +1,7 @@
 from pydantic import validator
 from pydantic.main import BaseModel
 
-from model.player import player_manager as pm
+from player_manager import player_manager as pm
 
 
 class Match(BaseModel) :

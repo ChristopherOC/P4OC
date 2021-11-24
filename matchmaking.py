@@ -1,5 +1,5 @@
 from pydantic.class_validators import validator
-from model.player import player_manager
+from player_manager import player_manager as pm
 from model.match import Match
 from random import choice
 
@@ -13,7 +13,7 @@ class Matchmaking:
     
     def gen_turn_one(self):
        
-        turn_players = [player_manager.search_by_id(player.id) for player in self.players]
+        turn_players = [pm.search_by_id(player.id) for player in self.players]
         turn_players.sort(key= lambda x: -x.rank)  
 
         return [sorted((p1.id, p2.id)) for p1, p2 in zip(turn_players[:4], turn_players[4:])]
@@ -39,7 +39,7 @@ class Matchmaking:
 
     def gen_next_turn(self):
         turn_matchs = []
-        turn_players = [player_manager.search_by_id(player.id) for player in self.players]
+        turn_players = [pm.search_by_id(player.id) for player in self.players]
         turn_players.sort(key= lambda x:(( -self.get_player_score(x.id),  x.rank)))
         while turn_players:
             
@@ -67,7 +67,7 @@ class Matchmaking:
 
 
 
-matchmaking = Matchmaking(player_manager.all())
+matchmaking = Matchmaking(pm.all())
 # matchs_t1 = matchmaking.gen_turn_one()
 # scores_t1 = matchmaking.gen_scores(matchs_t1)
 # print('Matchs du premier tour : ',matchs_t1)
