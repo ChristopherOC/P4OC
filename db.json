@@ -1,70 +1,69 @@
-[
-    {
-       "name":"Bataille",
-       "location":"Paris",
-       "date":"2021-4-06 10:00",
-       "rounds":[
-          {
-             "name":"round1",
-             "begin_date":"2021-04-01 10:00",
-             "end_date":"2021-05-01 10:10",
-             "matchs":[
-                {
-                   "id_player_1":1,
-                   "id_player_2":2
-                },
-                {
-                   "score_player_1 ":1,
-                   "score_player_2":2
-                }
-             ]
-          }
-       ],
-       "players":[
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8
-       ],
-       "id":1,
-       "end_date": null
-    },
-    {
-       "name":"Bataille",
-       "location":"Paris",
-       "date":"2021-4-06 10:00",
-       "rounds":[
-          {
-             "name":"round1",
-             "begin_date":"2021-04-01 10:00",
-             "end_date":"2021-05-01 10:10",
-             "matchs":[
-                {
-                   "id_player_1":1,
-                   "id_player_2":2
-                },
-                {
-                   "score_player_1 ":1,
-                   "score_player_2":2
-                }
-             ]
-          }
-       ],
-       "players":[
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8
-       ],
-       "id":2,
-       "end_date":"2021-05-01 10:10"
-    }
- ]
+{
+   "players": {
+       "1": {
+           "birthdate": "1990-11-30",
+           "firstname": "Magnus",
+           "sexe": "M",
+           "id": 1,
+           "lastname": "Carlsen",
+           "rank": 2855
+       },
+       "2": {
+           "birthdate": "1992-07-30",
+           "firstname": "Fabiano",
+           "sexe": "M",
+           "id": 2,
+           "lastname": "Caruana",
+           "rank": 2800
+       },
+       "3": {
+           "birthdate": "1992-10-24",
+           "firstname": "Ding",
+           "sexe": "M",
+           "id": 3,
+           "lastname": "Liren",
+           "rank": 2799
+       },
+       "4": {
+           "birthdate": "1990-07-14",
+           "firstname": "Ian",
+           "sexe": "M",
+           "id": 4,
+           "lastname": "Nepomniachtchi",
+           "rank": 2792
+       },
+       "5": {
+           "birthdate": "1982-10-06",
+           "firstname": "Levon",
+           "sexe": "M",
+           "id": 5,
+           "lastname": "Aronian",
+           "rank": 2782
+       },
+       "6": {
+           "birthdate": "1985-04-12",
+           "firstname": "Shakhriyar",
+           "sexe": "M",
+           "id": 6,
+           "lastname": "Mamedyarov",
+           "rank": 2762
+       },
+       "7": {
+           "birthdate": "1983-10-31",
+           "firstname": "Alexander",
+           "sexe": "M",
+           "id": 7,
+           "lastname": "Grischuk",
+           "rank": 2775
+       },
+       "8": {
+           "birthdate": "1994-06-28",
+           "firstname": "Anish",
+           "sexe": "M",
+           "id": 8,
+           "lastname": "Giri",
+           "rank": 2777
+       }
+   },
+   "tournaments": {}
+}

@@ -1,4 +1,5 @@
 
+from manager import Manager
 from router import router
 import views
 from player_manager import player_manager as pm
@@ -25,15 +26,20 @@ def player_form():
 
 def list_players_by_name():
     print("In the player list")
-    views.ListView("Players",pm.search(sort_key = lambda x: x.lastname)).display() #fonctiuonne plus
+    views.ListView("Players",pm.search(sort_key = lambda x: x.lastname)).display() 
     router.navigate("/players")
 
 
 def list_players_by_rank():
     print("In the player list")
-    views.ListView("Players",pm.search(sort_key = lambda x: -x.rank)).display() # fonctionne plus
+    views.ListView("Players",pm.search(sort_key = lambda x: -x.rank)).display() 
     router.navigate("/players")
 
+# def update_player_rank():
+#     print("Updating player rank's")
+#     updating = pm.search(filter_key= lambda x: x.rank) à compléter
+    # Manager.save_item()
+    # router.navigate("/players")
 
 # For the tournament
 def tournaments_controller():
@@ -44,7 +50,7 @@ def tournaments_controller():
 def tournament_form():
     print("In the Form Tournament")
     views.FormTournament().display()
-    players = [] ### Insert des joueurs à la création du tournoi /// ajouter la possibilité d'arrêter d'ajouter des joueurs
+    players = [] ### Insert des joueurs à la création du tournoi 
     player = views.FormPlayer().display()
     while len(players) < 8 :
         input(views.FormPlayer().display())
@@ -64,6 +70,7 @@ def pending_tournament(): #Boucler tant que c'est pas bon
     print("In the pending tournaments")
     print(tm.all())
     tournaments = tm.search(filter_key = lambda x: x.end_date == None)
+
     print(tournaments)
 
   

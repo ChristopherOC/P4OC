@@ -1,7 +1,8 @@
 import datetime
 from typing import List
-from manager import Manager
+
 from pydantic import BaseModel, validator
+from pydantic.types import PositiveInt, constr
 
 from player_manager import player_manager as pm
 from model.round import Round
@@ -9,13 +10,13 @@ from model.round import Round
 
 class Tournament(BaseModel):
     
-    name : str
-    location : str
-    begin_date : str = None
-    end_date : str = None
+    name : constr
+    location : constr
+    begin_date : datetime = datetime.today()
+    end_date : datetime = None
     rounds : List[Round]
-    players : list
-    id : int = None
+    players : List[PositiveInt]
+    id : PositiveInt
     
      
     @validator('name')

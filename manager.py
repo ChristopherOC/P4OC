@@ -10,16 +10,23 @@ class Manager :
         self.items = {}
         self.item_type = item_type
         db = TinyDB("db.json", sort_keys=True, indent=4)
-        self.table = db.table(type.__name__.lower() + "s")
+        self.table = db.table(self.item_type.__name__.lower() + "s")
+        for item_data in  self.table :
+            self.create(**item_data)
 
     # def from_json(self, path):
     #     with open(path) as file :
     #         for item_data in json.loads(file.read()):
     #             self.create(**item_data)
                 
-    def create(self,**kwargs):
+    def create(self,save =  False,**kwargs):
+        if "id" not in kwargs:
+            kwargs["id"]= self.table.all()[-1].doc_id +1
+        
         item = self.item_type(**kwargs)
         self.items[item.id] = item
+        if save :
+            self.save_item(item.id)
         return item
 
     def search(self,filter_key = lambda x: x, sort_key = lambda x: x):

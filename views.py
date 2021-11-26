@@ -1,5 +1,6 @@
 from typing import List, Tuple, Any
 import enum
+
 from model.player import Player
 
 
@@ -133,6 +134,7 @@ class ListView(View): #lister les joueurs
 class PendingTournament(Form):
     def __init__(self):
         super().__init__(title = "Reprise du tournoi")
+        
         
        
 
