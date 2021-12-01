@@ -19,42 +19,42 @@ class Tournament(BaseModel):
     id : PositiveInt
     
      
-    @validator('name')
-    def check_tournament_name(cls, value):
-        if not isinstance(value, str):
-            raise ValueError('Must be a valid name')
-        return value
+    # @validator('name')
+    # def check_tournament_name(cls, value):
+    #     if not isinstance(value, str):
+    #         raise ValueError('Must be a valid name')
+    #     return value
     
-    @validator('location')
-    def check_location(cls, value):
-        if not isinstance(value, str):
-            raise ValueError('Must be a valid location')
-        return value
+    # @validator('location')
+    # def check_location(cls, value):
+    #     if not isinstance(value, str):
+    #         raise ValueError('Must be a valid location')
+    #     return value
     
-    @validator('begin_date')
-    def check_begin_date(cls,value):
-        if not value :
-            value = datetime.datetime()
-        try:
-            value = datetime.fromisoformat(value)
-        except ValueError:
-            raise ValueError('wrong format')
+    # @validator('begin_date')
+    # def check_begin_date(cls,value):
+    #     if not value :
+    #         value = datetime.datetime()
+    #     try:
+    #         value = datetime.fromisoformat(value)
+    #     except ValueError:
+    #         raise ValueError('wrong format')
         
-        return value
+    #     return value
 
-    @validator('begin_date','end_date')    
-    def check_if_date_ok(cls,value):
-        if not (isinstance(value,str) or isinstance(value, datetime)):
-            raise ValueError('must be a string or datetime')
-        return value
+    # @validator('begin_date','end_date')    
+    # def check_if_date_ok(cls,value):
+    #     if not (isinstance(value,str) or isinstance(value, datetime)):
+    #         raise ValueError('must be a string or datetime')
+    #     return value
 
-    @validator('end_date')
-    def check_end_date(cls,value,values):
-        if not (isinstance(value,str) or isinstance(value,datetime)):
-            raise ValueError('must be a string')
-        # if value < values:
-        #     raise ValueError("dates don't match")
-        return value
+    # @validator('end_date')
+    # def check_end_date(cls,value,values):
+    #     if not (isinstance(value,str) or isinstance(value,datetime)):
+    #         raise ValueError('must be a string')
+    #     # if value < values:
+    #     #     raise ValueError("dates don't match")
+    #     return value
 
 
 
