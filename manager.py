@@ -25,9 +25,11 @@ class Manager :
         
         item = self.item_type(**kwargs)
         self.items[item.id] = item
+        print(kwargs)
         if save :
             self.save_item(item.id)
         return item
+        
 
     def search(self,filter_key = lambda x: x, sort_key = lambda x: x):
         # print(self.items)

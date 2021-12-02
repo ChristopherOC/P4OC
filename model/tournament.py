@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from typing import List
 
 from pydantic import BaseModel, validator
@@ -10,8 +10,8 @@ from model.round import Round
 
 class Tournament(BaseModel):
     
-    name : constr
-    location : constr
+    name : constr()
+    location : constr()
     begin_date : datetime = datetime.today()
     end_date : datetime = None
     rounds : List[Round]

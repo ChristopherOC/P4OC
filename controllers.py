@@ -38,7 +38,6 @@ def list_players_by_rank():
 # def update_player_rank():
 #     print("Updating player rank's")
 #     updating = pm.search(filter_key= lambda x: x.rank) à compléter
-    # Manager.save_item()
     # router.navigate("/players")
 
 # For the tournament
@@ -69,10 +68,10 @@ def tournament_list():
 def pending_tournament(): #Boucler tant que c'est pas bon 
     print("In the pending tournaments")
     print(tm.all())
-    tournaments = tm.search(filter_key = lambda x: x.end_date == None)
+    # tournaments = tm.search(filter_key = lambda x: x.end_date == None)
+    views.PendingTournament(tournaments = tm.search(filter_key = lambda x: x.end_date == None)).display()
 
-    print(tournaments)
-
+    router.navigate("/tournaments")
   
     # while True:
     #     form_data = views.Form("Tournoi à reprendre", fields=[("id","id",int)]).display()

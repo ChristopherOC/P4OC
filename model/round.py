@@ -3,14 +3,15 @@ from typing import List, Tuple
 
 from pydantic import BaseModel, validator, constr
 from manager import Manager
+from model.match import Match
 
 
 class Round(BaseModel):
 
-    name : constr 
+    name : str #Pq pas constr ? 
     begin_date : date
     end_date : date  = None
-    matchs : List
+    matchs : List[Match]
 
     # @validator('name')
     # def check_round_name(cls,value):
@@ -30,7 +31,7 @@ class Round(BaseModel):
     #         raise ValueError
     #     return value
 
-round_manager = Manager(Round)
+# round_manager = Manager(Round)
 
 # Test = Round(name="testround",begin_date = "2022-06-06 10:00",end_date="2022-06-07 10:00",matchs =[[ 1, 1], [2,0]])
 # print(Test)
