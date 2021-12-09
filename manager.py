@@ -25,7 +25,6 @@ class Manager :
         
         item = self.item_type(**kwargs)
         self.items[item.id] = item
-        print(kwargs)
         if save :
             self.save_item(item.id)
         return item

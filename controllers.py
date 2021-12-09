@@ -67,9 +67,10 @@ def tournament_list():
 
 def pending_tournament(): #Boucler tant que c'est pas bon 
     print("In the pending tournaments")
-    print(tm.all())
-    # tournaments = tm.search(filter_key = lambda x: x.end_date == None)
-    views.PendingTournament(tournaments = tm.search(filter_key = lambda x: x.end_date == None)).display()
+    # search_not_ended = tm.search(filter_key= lambda x: x.end_date == None)
+    # input(search_not_ended)
+    views.PickTournament("Pending_Tournament", tm.search(filter_key= lambda x: x.end_date == None)).display()
+    #pick un tounoi
 
     router.navigate("/tournaments")
   

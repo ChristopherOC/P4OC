@@ -65,11 +65,11 @@
            "rank": 2777
        }
    },
-   "tournaments":  { 
+   "tournaments":  {
        "1" :{
         "name":"Bataille",
         "location":"Paris",
-        "date":"2021-04-06T10:00",
+        "begin_date":"2021-04-06T10:00",
         "id":1,
         "rounds":[
        {
@@ -79,11 +79,9 @@
           "matchs":[
              {
                 "id_player_1":1,
-                "id_player_2":2
-             },
-             {
-                "score_player_1 ":1,
-                "score_player_2":2
+                "id_player_2":1,
+                "score_player_1":1,
+                "score_player_2":0
              }
           ]
        }
@@ -98,7 +96,39 @@
        7,
        8
     ],
-    "end_date":"None"
+    "end_date": null
+        },
+    "2" :{
+        "name":"Test",
+        "location":"Brest",
+        "begin_date":"2021-04-06T10:00",
+        "id":2,
+        "rounds":[
+        {
+            "name":"round1",
+            "begin_date":"2021-04-01T10:00",
+            "end_date":"2021-05-01T10:10",
+            "matchs":[
+                {
+                "id_player_1":1,
+                "id_player_2":1,
+                "score_player_1":1,
+                "score_player_2":0
+                }
+            ]
+        }
+    ],
+    "players":[
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+    ],
+    "end_date": "2021-09-12T06:47"
         }
    }
 }

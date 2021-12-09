@@ -1,6 +1,10 @@
 from typing import List, Tuple, Any
 import enum
+
 from manager import Manager
+from model.tournament import Tournament
+from tournament_manager import tournament_manager as tm
+
 
 from model.player import Player
 
@@ -132,13 +136,22 @@ class ListView(View): #lister les joueurs
 
 
 
-class PendingTournament(View):
-    def __init__(self, title: str, content: str = '', blocking: bool = False):
-        super().__init__(title, content=content, blocking=blocking)
-        
-        Manager.save_item()
-        
-        
+class PickTournament(Menu):
+        def __init__(self, title: str, tournaments: List[Tournament]):
+            choices = [(tournament.name, tournament.id) for tournament in tournaments]
+            super().__init__(title, choices)
+            
+            
+        # self.fields = fields
+        # Manager.save_item()
+
+class PickWinner(Menu):#a terminer
+    def __init__(self, player_1 : Player, player_2: Player ):
+        choices = [(f"{player_1.firstname} {player_1.lastname} a gagné ", 1.0),
+        (f"{player_2.firstname} {player_2.lastname} a gagné ",0.0 ),
+        f"égalité", 0.5]
+
+        super().__init__(title = "Choix du gagnant", choices = choices)
        
 
 

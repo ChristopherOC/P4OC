@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import datetime
 from typing import List, Tuple
 
 from pydantic import BaseModel, validator, constr
@@ -9,8 +9,8 @@ from model.match import Match
 class Round(BaseModel):
 
     name : str #Pq pas constr ? 
-    begin_date : date
-    end_date : date  = None
+    begin_date : datetime
+    end_date : datetime  = None
     matchs : List[Match]
 
     # @validator('name')
