@@ -4,7 +4,7 @@
            "birthdate": "1990-11-30",
            "firstname": "Magnus",
            "sexe": "M",
-           "id": 1,
+           "id": 42,
            "lastname": "Carlsen",
            "rank": 2855
        },
@@ -112,8 +112,8 @@
                 {
                 "id_player_1":1,
                 "id_player_2":1,
-                "score_player_1":1,
-                "score_player_2":0
+                "score_player_1":null,
+                "score_player_2":null
                 }
             ]
         }

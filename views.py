@@ -1,4 +1,5 @@
-from typing import List, Tuple, Any
+from datetime import date, datetime
+from typing import Dict, List, Tuple, Any
 import enum
 
 from manager import Manager
@@ -74,7 +75,11 @@ class Form(View): #Formulaire générique qui enregistre les éntrées pour chaq
                     break
                 except ValueError:
                     print('Valeur spécifiée incorrecte')
+        return self.process_data(data)
+
+    def process_data(self, data : Dict):
         return data
+
 
 class PlayerMenu(Menu): #Menu du joueur
     def __init__(self):
@@ -96,6 +101,11 @@ class FormPlayer(Form): #Formulaire d'un joueur
         ("birthdate_day","le jour de naissance du joueur", str),
         ("sexe","le sexe du joueur",GenderMenu)])
 
+    def process_data(self, data : Dict):
+        data["birthdate"] = date(year = data["birthdate_year"], month =data["birthdate_month"] , day =data["birthdate_day"] )
+
+        return data
+
 
 class EnumMenu(Menu):#Complète le formulaire d'un joueur pour le sexe
     def __init__(self, title: str, enum: enum.Enum):
@@ -116,6 +126,10 @@ class TournamentMenu(Menu):#Menu du tournoi
         ("Créer un nouveau tournoi", "/tournament/add"),
         ("Reprendre un tournoi", "/tournaments/list/pending"),
         ("Retour","/")])
+
+    def process_data(self, data : Dict):
+        data["begin_date"] = datetime(year = data["tournament_year"], month =data["tournament_month"] , day =data["tournament_day"] )
+        return data
 
 class FormTournament(Form): #Formulaire d'un tournoi
     def __init__(self):
@@ -152,6 +166,12 @@ class PickWinner(Menu):#a terminer
         f"égalité", 0.5]
 
         super().__init__(title = "Choix du gagnant", choices = choices)
+
+class PickPlayer(Menu):
+    def __init__(self, players : List[Player]):
+        choices = [(str(player), player.id) for player in players]
+        
+        super().__init__(title= "Choisissez un joueur", choices = choices)
        
 
 

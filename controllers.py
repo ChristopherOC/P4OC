@@ -1,9 +1,14 @@
 
+from datetime import datetime
 from manager import Manager
+from matchmaking import Matchmaking
+from play_tournament import PlayTournament
 from router import router
 import views
 from player_manager import player_manager as pm
 from tournament_manager import tournament_manager as tm
+from play_tournament import PlayTournament as pt
+from round_manager import round_manager as rm
 
 
 def main_controller():
@@ -20,7 +25,8 @@ def players_controller():
 
 def player_form():
     print("In the player form")
-    views.FormPlayer().display()
+    form_data = views.FormPlayer().display()
+    pm.create(save= True, **form_data)
     router.navigate("/players")
 
 
@@ -46,9 +52,10 @@ def tournaments_controller():
     router.navigate(views.TournamentMenu().display())
 
 
-def tournament_form():
+
+def tournament_form():#create
     print("In the Form Tournament")
-    views.FormTournament().display()
+    form_data = views.FormTournament().display()
     players = [] ### Insert des joueurs à la création du tournoi 
     player = views.FormPlayer().display()
     while len(players) < 8 :
@@ -58,6 +65,8 @@ def tournament_form():
         if len(players) == 8 :
             router.navigate(views.MainMenu().display())
             print("Assez de joueurs enregistrés")
+    form_data["players"] = players
+    tm.create(save= True, **form_data)
     router.navigate("/tournaments") 
 
 def tournament_list():
@@ -70,6 +79,9 @@ def pending_tournament(): #Boucler tant que c'est pas bon
     # search_not_ended = tm.search(filter_key= lambda x: x.end_date == None)
     # input(search_not_ended)
     views.PickTournament("Pending_Tournament", tm.search(filter_key= lambda x: x.end_date == None)).display()
+    Matchmaking.gen_turn_one()
+    Matchmaking.gen_next_turn()
+    
     #pick un tounoi
 
     router.navigate("/tournaments")

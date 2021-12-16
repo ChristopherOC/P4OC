@@ -6,7 +6,7 @@ from pydantic.types import PositiveInt, constr
 
 from player_manager import player_manager as pm
 from model.round import Round
-from views import View
+
 
 
 class Tournament(BaseModel):
@@ -15,11 +15,9 @@ class Tournament(BaseModel):
     location : constr()
     begin_date : datetime = datetime.today()
     end_date : datetime = None
-    rounds : List[Round]
+    rounds : List[Round] = []
     players : List[PositiveInt]
     id : PositiveInt
-    
-    def play(self, view : View):
 
     # @validator('name')
     # def check_tournament_name(cls, value):

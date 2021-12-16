@@ -67,7 +67,7 @@ class Matchmaking:
 
 
 
-matchmaking = Matchmaking(pm.all())
+# matchmaking = Matchmaking(pm.all())
 # matchs_t1 = matchmaking.gen_turn_one()
 # scores_t1 = matchmaking.gen_scores(matchs_t1)
 # print('Matchs du premier tour : ',matchs_t1)
