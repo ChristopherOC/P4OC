@@ -2,12 +2,12 @@
 from datetime import datetime
 from manager import Manager
 from matchmaking import Matchmaking
-from play_tournament import PlayTournament
+# from play_tournament import PlayTournament
 from router import router
 import views
 from player_manager import player_manager as pm
 from tournament_manager import tournament_manager as tm
-from play_tournament import PlayTournament as pt
+# from play_tournament import PlayTournament as pt
 from round_manager import round_manager as rm
 
 
@@ -41,10 +41,11 @@ def list_players_by_rank():
     views.ListView("Players",pm.search(sort_key = lambda x: -x.rank)).display() 
     router.navigate("/players")
 
-# def update_player_rank():
-#     print("Updating player rank's")
-#     updating = pm.search(filter_key= lambda x: x.rank) à compléter
-    # router.navigate("/players")
+def update_player_rank():#terminer
+    print("Updating player rank's")
+    #pickplayer, reécupérer, modifié, et sauvegarder
+    updating = pm.search(filter_key= lambda x: x.rank)
+    router.navigate("/players")
 
 # For the tournament
 def tournaments_controller():
@@ -78,9 +79,12 @@ def pending_tournament(): #Boucler tant que c'est pas bon
     print("In the pending tournaments")
     # search_not_ended = tm.search(filter_key= lambda x: x.end_date == None)
     # input(search_not_ended)
-    views.PickTournament("Pending_Tournament", tm.search(filter_key= lambda x: x.end_date == None)).display()
-    Matchmaking.gen_turn_one()
-    Matchmaking.gen_next_turn()
+    tournament_id = views.PickTournament("Pending_Tournament", tm.search(filter_key= lambda x: x.end_date == None)).display()
+    tournament = tm.search_by_id(tournament_id)
+    print(tournament)
+
+    # Matchmaking.gen_turn_one()
+    # Matchmaking.gen_next_turn()
     
     #pick un tounoi
 
@@ -91,7 +95,3 @@ def pending_tournament(): #Boucler tant que c'est pas bon
     #     tournament = tournament_manager.search(form_data["id"])    
     #     router.navigate("/tournaments")
 
-
-    #Moyen de savoir si le tournoi est terminé ou peut etre continué
-    #Modifier le modele du tournoi "end_date" ,null 
-    #Gérer TinyDB

@@ -4,7 +4,7 @@
            "birthdate": "1990-11-30",
            "firstname": "Magnus",
            "sexe": "M",
-           "id": 42,
+           "id": 1,
            "lastname": "Carlsen",
            "rank": 2855
        },
@@ -79,9 +79,8 @@
           "matchs":[
              {
                 "id_player_1":1,
-                "id_player_2":1,
-                "score_player_1":1,
-                "score_player_2":0
+                "id_player_2":2,
+                "score_player_1":1.0
              }
           ]
        }
@@ -97,38 +96,7 @@
        8
     ],
     "end_date": null
-        },
-    "2" :{
-        "name":"Test",
-        "location":"Brest",
-        "begin_date":"2021-04-06T10:00",
-        "id":2,
-        "rounds":[
-        {
-            "name":"round1",
-            "begin_date":"2021-04-01T10:00",
-            "end_date":"2021-05-01T10:10",
-            "matchs":[
-                {
-                "id_player_1":1,
-                "id_player_2":1,
-                "score_player_1":null,
-                "score_player_2":null
-                }
-            ]
         }
-    ],
-    "players":[
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8
-    ],
-    "end_date": "2021-09-12T06:47"
-        }
+    
    }
 }

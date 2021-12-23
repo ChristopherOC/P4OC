@@ -156,8 +156,7 @@ class PickTournament(Menu):
             super().__init__(title, choices)
             
             
-        # self.fields = fields
-        # Manager.save_item()
+        
 
 class PickWinner(Menu):#a terminer
     def __init__(self, player_1 : Player, player_2: Player ):

@@ -24,16 +24,11 @@ class Match(BaseModel) :
             return Result(1.0 - self.score_player_1.value) if self.score_player_1 else None
 
 
-        @validator('id_player_1','id_player_2')
-        def check_id_player(cls,value):
-            if not isinstance(value,int):
-                raise ValueError('must be an int')  
-            try:
-                pm.search_by_id(value)
-            except ValueError:
-                raise ValueError(f"This player(id:{value}) don't exist")
+        @validator('id_player_2')
+        def check_id_player(cls,value,values):
+            assert value != values['id_player_1']
             return value
-
-
-    
-            
+        
+        def __eq__(self, other) -> bool:
+            return min(self.id_player_1, self.id_player_2) == min(other.id_player_1, other.id_player_2) and \
+                max(self.id_player_1, self.id_player_2) == max(other.id_player_1, other.id_player_2)
