@@ -42,7 +42,7 @@ class Manager :
         return list(self.items.values())
   
     def save_item(self, id):
-        item = self.find_by_id(id)
+        item = self.search_by_id(id)
         self.table.upsert(Document(json.loads(item.json()), doc_id=id))   
 
    # def search_by_name(self,lastname):

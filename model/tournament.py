@@ -11,52 +11,20 @@ from model.round import Round
 
 class Tournament(BaseModel):
     
-    name : constr()
-    location : constr()
+    name : constr( strict= True, regex=  "^[A-Za-z '\-éèàçê]{2,25}$")
+    location : constr( strict= True, regex=  "^[A-Za-z '\-éèàçê]{2,25}$")
     begin_date : datetime = datetime.today()
     end_date : datetime = None
     rounds : List[Round] = []
     players : List[PositiveInt]
     id : PositiveInt
 
-    # @validator('name')
-    # def check_tournament_name(cls, value):
-    #     if not isinstance(value, str):
-    #         raise ValueError('Must be a valid name')
-    #     return value
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.setup()
     
-    # @validator('location')
-    # def check_location(cls, value):
-    #     if not isinstance(value, str):
-    #         raise ValueError('Must be a valid location')
-    #     return value
-    
-    # @validator('begin_date')
-    # def check_begin_date(cls,value):
-    #     if not value :
-    #         value = datetime.datetime()
-    #     try:
-    #         value = datetime.fromisoformat(value)
-    #     except ValueError:
-    #         raise ValueError('wrong format')
-        
-    #     return value
-
-    # @validator('begin_date','end_date')    
-    # def check_if_date_ok(cls,value):
-    #     if not (isinstance(value,str) or isinstance(value, datetime)):
-    #         raise ValueError('must be a string or datetime')
-    #     return value
-
-    # @validator('end_date')
-    # def check_end_date(cls,value,values):
-    #     if not (isinstance(value,str) or isinstance(value,datetime)):
-    #         raise ValueError('must be a string')
-    #     # if value < values:
-    #     #     raise ValueError("dates don't match")
-    #     return value
-
-
+    def setup(self):
+        pass
 
     @validator('players')
     def check_players(cls, value):
@@ -77,6 +45,9 @@ class Tournament(BaseModel):
             raise ValueError('wrong id')
         return value
 
+    def play(self):
+
+        pass
     
 # tourney= Tournament(name="Feraille", location="Tours", date="2021-6-3")
 # print(tourney.json())

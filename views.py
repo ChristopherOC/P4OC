@@ -5,6 +5,7 @@ import enum
 from manager import Manager
 from model.tournament import Tournament
 from tournament_manager import tournament_manager as tm
+from player_manager import player_manager as pm
 
 
 from model.player import Player
@@ -59,14 +60,16 @@ class Form(View): #Formulaire générique qui enregistre les éntrées pour chaq
         super().__init__(title)
         self.fields = fields
 
+
+
     def display(self):
         super().display()
         data = {}
         for name, desc, _type in self.fields:  
             while True:
-                if isinstance(_type(), EnumMenu):
-                    data[name]= _type().display()
-                    break
+                # if isinstance(_type(), EnumMenu):
+                #     data[name]= _type().display()
+                #     break
                 try :
                     data[name] = _type(input("Veuillez saisir " + desc + "\n"))
                     if isinstance(data[name],str):
@@ -133,14 +136,30 @@ class TournamentMenu(Menu):#Menu du tournoi
 
 class FormTournament(Form): #Formulaire d'un tournoi
     def __init__(self):
-        super().__init__(title = "Formulaire du tournoi", fields=[('name','le nom du tournoi', str),
-        ('location','le lieu du tournoi', str),
-        ('tournament_day','le jour du tournoi', int),
-        ('tournament_month','le mois du tournoi', int),
-        ("tournament_year","l'année du tournois", int)])
+        super().__init__(title = "Formulaire du tournoi", fields=[
+            ('name','le nom du tournoi', str),
+            ('location','le lieu du tournoi', str),
+            ('start_date_day','le jour du tournoi', int),
+            ('start_date_month','le mois du tournoi', int),
+            ("start_date_year","l'année du tournois", int),
+            ("number_of_players", "Nombre de joueur",int),
+            ("number_of_rounds", "Nombre de rounds", int)])
+        
+        #nettoyer le code / controller, rajouter les joueurs au tournoi, reconstituer heure et minute et les ajouter au formulaire, completer les rounds avec les matchs
+    def process_data(self, data: Dict):
+        data["players"] = [PickPlayer(pm.all()).display() for _ in range(data["number_of_players"])]
+        data["rounds"] = [{"name" : f'Round{round_nb}'} for round_nb in range(1,data["number_of_rounds"]+1)]
+        data["players"] = players
+        data["rounds"] = [{"name" : f'Round{round_nb}'} for round_nb in range(1,data["number_of_rounds"]+1)]
+        return data
 
 
 
+class PendingTournament(Form): #Process data pour la date renseignée 
+    def __init__(self):
+        super().__init__(title = "Reprise du tournoi", fields = [("end_date_year", "année de fin du tournoi", str),
+        ("end_date_month", "mois de fin du tournoi",str),
+        ("end_date_day", "jour de fin de tournoi",str)])
 
 
 class ListView(View): #lister les joueurs
@@ -156,24 +175,21 @@ class PickTournament(Menu):
             super().__init__(title, choices)
             
             
-        
-
 class PickWinner(Menu):#a terminer
     def __init__(self, player_1 : Player, player_2: Player ):
         choices = [(f"{player_1.firstname} {player_1.lastname} a gagné ", 1.0),
         (f"{player_2.firstname} {player_2.lastname} a gagné ",0.0 ),
         f"égalité", 0.5]
-
         super().__init__(title = "Choix du gagnant", choices = choices)
 
 class PickPlayer(Menu):
     def __init__(self, players : List[Player]):
         choices = [(str(player), player.id) for player in players]
-        
         super().__init__(title= "Choisissez un joueur", choices = choices)
        
-
-
+class UpdatePlayer(Form):
+    def __init__(self):
+        super().__init__(title= "Saisir la nouvelle donnée", fields= [("rank", "nouveau classement", int)])
 
 # View(title="Tournament", content="Veuillez choisir dans le menu\n", blocking=True).display()
 # Menu(title='Menu', choices=['FormPlayer','FormTournament','Exit']).display()
