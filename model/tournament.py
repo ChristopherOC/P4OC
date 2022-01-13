@@ -3,6 +3,7 @@ from typing import List
 
 from pydantic import BaseModel, validator
 from pydantic.types import PositiveInt, constr
+from model.match import Match
 
 from player_manager import player_manager as pm
 from model.round import Round
@@ -24,7 +25,13 @@ class Tournament(BaseModel):
         self.setup()
     
     def setup(self):
-        pass
+        if not self.rounds[0].matchs:
+            players = [pm.search_by_id(player_id) for player_id in self.players]
+            players.sort(key= lambda x: -x.rank)
+            group_1 = players[:len(players)//2]
+            group_2 = players[len(players)//2:]
+            self.rounds[0].matchs = [Match(id_player_1=player_1.id, id_player_2=player_2.id) for player_1, player_2 in zip(group_1, group_2)]
+
 
     @validator('players')
     def check_players(cls, value):
@@ -45,11 +52,8 @@ class Tournament(BaseModel):
             raise ValueError('wrong id')
         return value
 
-    def play(self):
+    def play(self, pick_winner_view_class):#coder les matchs de tournament, round et match
 
         pass
-    
-# tourney= Tournament(name="Feraille", location="Tours", date="2021-6-3")
-# print(tourney.json())
 
  

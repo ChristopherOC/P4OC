@@ -9,9 +9,7 @@ from player_manager import player_manager as pm
 class Result(Enum):
     Win = 1.0
     Loose = 0.0
-    Draw = 0.5
-
-    
+    Draw = 0.5 
 
 class Match(BaseModel) :
 
@@ -22,7 +20,6 @@ class Match(BaseModel) :
         @property 
         def score_player_2(self):
             return Result(1.0 - self.score_player_1.value) if self.score_player_1 else None
-
 
         @validator('id_player_2')
         def check_id_player(cls,value,values):

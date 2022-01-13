@@ -67,38 +67,40 @@
     },
     "tournaments": {
         "1": {
-            "begin_date": "2021-04-06T10:00",
+            "begin_date": "2022-01-13T10:47:45.349177",
             "end_date": null,
             "id": 1,
-            "location": "Paris",
-            "name": "Bataille",
+            "location": "paris",
+            "name": "test",
             "players": [
                 1,
-                2,
-                3,
                 4,
-                5,
                 6,
-                7,
-                8
+                5
             ],
             "rounds": [
                 {
-                    "begin_date": "2021-04-01T10:00",
-                    "end_date": "2021-05-01T10:10",
+                    "begin_date": "2022-01-13T10:47:58.337512",
+                    "end_date": null,
                     "matchs": [
                         {
                             "id_player_1": 1,
-                            "id_player_2": 2,
+                            "id_player_2": 5,
                             "score_player_1": null
                         },
                         {
-                            "id_player_1": 3,
-                            "id_player_2": 4,
+                            "id_player_1": 4,
+                            "id_player_2": 6,
                             "score_player_1": null
                         }
                     ],
-                    "name": "round1"
+                    "name": "Round1"
+                },
+                {
+                    "begin_date": null,
+                    "end_date": null,
+                    "matchs": [],
+                    "name": "Round2"
                 }
             ]
         }

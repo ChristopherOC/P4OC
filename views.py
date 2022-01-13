@@ -131,7 +131,7 @@ class TournamentMenu(Menu):#Menu du tournoi
         ("Retour","/")])
 
     def process_data(self, data : Dict):
-        data["begin_date"] = datetime(year = data["tournament_year"], month =data["tournament_month"] , day =data["tournament_day"] )
+        data["begin_date"] = datetime(year = data["tournament_year"], month =data["tournament_month"] , day =data["tournament_day"])
         return data
 
 class FormTournament(Form): #Formulaire d'un tournoi
@@ -139,18 +139,13 @@ class FormTournament(Form): #Formulaire d'un tournoi
         super().__init__(title = "Formulaire du tournoi", fields=[
             ('name','le nom du tournoi', str),
             ('location','le lieu du tournoi', str),
-            ('start_date_day','le jour du tournoi', int),
-            ('start_date_month','le mois du tournoi', int),
-            ("start_date_year","l'année du tournois", int),
             ("number_of_players", "Nombre de joueur",int),
             ("number_of_rounds", "Nombre de rounds", int)])
         
         #nettoyer le code / controller, rajouter les joueurs au tournoi, reconstituer heure et minute et les ajouter au formulaire, completer les rounds avec les matchs
     def process_data(self, data: Dict):
         data["players"] = [PickPlayer(pm.all()).display() for _ in range(data["number_of_players"])]
-        data["rounds"] = [{"name" : f'Round{round_nb}'} for round_nb in range(1,data["number_of_rounds"]+1)]
-        data["players"] = players
-        data["rounds"] = [{"name" : f'Round{round_nb}'} for round_nb in range(1,data["number_of_rounds"]+1)]
+        data["rounds"] = [{"name" : f'Round{round_nb}',"begin_date" : datetime.today() if round_nb == 1 else None} for round_nb in range(1,data["number_of_rounds"]+1)]
         return data
 
 
