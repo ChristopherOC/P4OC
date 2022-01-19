@@ -53,7 +53,7 @@ class Tournament(BaseModel):
         return value
 
     def play(self, pick_winner_view_class):#coder les matchs de tournament, round et match
-
+        
         pass
 
  

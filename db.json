@@ -66,43 +66,7 @@
         }
     },
     "tournaments": {
-        "1": {
-            "begin_date": "2022-01-13T10:47:45.349177",
-            "end_date": null,
-            "id": 1,
-            "location": "paris",
-            "name": "test",
-            "players": [
-                1,
-                4,
-                6,
-                5
-            ],
-            "rounds": [
-                {
-                    "begin_date": "2022-01-13T10:47:58.337512",
-                    "end_date": null,
-                    "matchs": [
-                        {
-                            "id_player_1": 1,
-                            "id_player_2": 5,
-                            "score_player_1": null
-                        },
-                        {
-                            "id_player_1": 4,
-                            "id_player_2": 6,
-                            "score_player_1": null
-                        }
-                    ],
-                    "name": "Round1"
-                },
-                {
-                    "begin_date": null,
-                    "end_date": null,
-                    "matchs": [],
-                    "name": "Round2"
-                }
-            ]
+        
         }
-    }
+
 }

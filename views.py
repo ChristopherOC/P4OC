@@ -67,9 +67,9 @@ class Form(View): #Formulaire générique qui enregistre les éntrées pour chaq
         data = {}
         for name, desc, _type in self.fields:  
             while True:
-                # if isinstance(_type(), EnumMenu):
-                #     data[name]= _type().display()
-                #     break
+                if isinstance(_type(), EnumMenu):
+                    data[name]= _type().display()
+                    break
                 try :
                     data[name] = _type(input("Veuillez saisir " + desc + "\n"))
                     if isinstance(data[name],str):
@@ -142,12 +142,10 @@ class FormTournament(Form): #Formulaire d'un tournoi
             ("number_of_players", "Nombre de joueur",int),
             ("number_of_rounds", "Nombre de rounds", int)])
         
-        #nettoyer le code / controller, rajouter les joueurs au tournoi, reconstituer heure et minute et les ajouter au formulaire, completer les rounds avec les matchs
     def process_data(self, data: Dict):
         data["players"] = [PickPlayer(pm.all()).display() for _ in range(data["number_of_players"])]
         data["rounds"] = [{"name" : f'Round{round_nb}',"begin_date" : datetime.today() if round_nb == 1 else None} for round_nb in range(1,data["number_of_rounds"]+1)]
         return data
-
 
 
 class PendingTournament(Form): #Process data pour la date renseignée 
@@ -163,7 +161,6 @@ class ListView(View): #lister les joueurs
         super().__init__(title ,content, blocking= True)
 
 
-
 class PickTournament(Menu):
         def __init__(self, title: str, tournaments: List[Tournament]):
             choices = [(tournament.name, tournament.id) for tournament in tournaments]
@@ -177,16 +174,13 @@ class PickWinner(Menu):#a terminer
         f"égalité", 0.5]
         super().__init__(title = "Choix du gagnant", choices = choices)
 
+
 class PickPlayer(Menu):
     def __init__(self, players : List[Player]):
         choices = [(str(player), player.id) for player in players]
         super().__init__(title= "Choisissez un joueur", choices = choices)
-       
+
+
 class UpdatePlayer(Form):
     def __init__(self):
         super().__init__(title= "Saisir la nouvelle donnée", fields= [("rank", "nouveau classement", int)])
-
-# View(title="Tournament", content="Veuillez choisir dans le menu\n", blocking=True).display()
-# Menu(title='Menu', choices=['FormPlayer','FormTournament','Exit']).display()
-# EnumMenu('EnumMenu', Player.Gender).display()
-# FormPlayer().display() 

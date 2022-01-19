@@ -12,5 +12,7 @@ class Round(BaseModel):
     end_date : datetime  = None
     matchs : List[Match] = []
 
+def play(self):
+    pass
   
 

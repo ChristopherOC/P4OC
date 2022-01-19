@@ -29,3 +29,6 @@ class Match(BaseModel) :
         def __eq__(self, other) -> bool:
             return min(self.id_player_1, self.id_player_2) == min(other.id_player_1, other.id_player_2) and \
                 max(self.id_player_1, self.id_player_2) == max(other.id_player_1, other.id_player_2)
+        
+        def play(self):
+            pass
