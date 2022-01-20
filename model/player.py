@@ -7,10 +7,7 @@ from os import error
 from pydantic import BaseModel, validator, PositiveInt
 from pydantic.types import conint, constr
 
-
-class Gender(Enum):
-    Male = "M"
-    Female = "F"
+from gender import Gender
 
 
 class Player(BaseModel) :

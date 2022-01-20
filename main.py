@@ -14,8 +14,8 @@ router.add_path("/players/update-rank",update_player_rank)
 
 #Tournament router
 router.add_path("/tournaments", tournaments_controller)
-router.add_path("/tournament/add",create_tournament)
-router.add_path("/tournaments/list/current",tournament_list)
+router.add_path("/tournament/add", create_tournament)
+router.add_path("/tournaments/list/current", tournament_list)
 router.add_path("/tournaments/list/pending", pending_tournament)
 
 router.navigate('/')

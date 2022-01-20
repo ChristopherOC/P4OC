@@ -1,15 +1,7 @@
 from pydantic import validator
 from pydantic.main import BaseModel
-from enum import Enum
 
-
-
-from player_manager import player_manager as pm
-
-class Result(Enum):
-    Win = 1.0
-    Loose = 0.0
-    Draw = 0.5 
+from result import Result
 
 class Match(BaseModel) :
 
@@ -30,5 +22,11 @@ class Match(BaseModel) :
             return min(self.id_player_1, self.id_player_2) == min(other.id_player_1, other.id_player_2) and \
                 max(self.id_player_1, self.id_player_2) == max(other.id_player_1, other.id_player_2)
         
-        def play(self):
-            pass
+        @property 
+        def is_played(self):
+            return self.score_player_1 is not None
+
+        def play(self, pick_winner_view_class, player_manager):
+            if not self.is_played:
+                self.score_player_1 = Result(pick_winner_view_class(player_1 = player_manager.search_by_id(self.id_player_1),
+                 player_2 = player_manager.search_by_id(self.id_player_2)).display())

@@ -1,6 +1,7 @@
 from datetime import date, datetime
 from typing import Dict, List, Tuple, Any
 import enum
+from gender import Gender
 
 from manager import Manager
 from model.tournament import Tournament
@@ -99,9 +100,9 @@ class FormPlayer(Form): #Formulaire d'un joueur
         super().__init__("Nouveau Joueur", fields=[("name","le prénom du joueur", str),
         ("lastname","le nom de famille du joueur", str),
         ("rank",  "le rang du joueur", int),
-        ("birthdate_year","l'année de naissance du joueur", str),
-        ("birthdate_month","le mois de naissance du joueur", str),
-        ("birthdate_day","le jour de naissance du joueur", str),
+        ("birthdate_year","l'année de naissance du joueur", int),
+        ("birthdate_month","le mois de naissance du joueur", int),
+        ("birthdate_day","le jour de naissance du joueur", int),
         ("sexe","le sexe du joueur",GenderMenu)])
 
     def process_data(self, data : Dict):
@@ -118,7 +119,7 @@ class EnumMenu(Menu):#Complète le formulaire d'un joueur pour le sexe
 
 class GenderMenu(EnumMenu):
     def __init__(self):
-        super().__init__("",Player.Gender)
+        super().__init__("",Gender)
 
 
 
@@ -171,7 +172,7 @@ class PickWinner(Menu):#a terminer
     def __init__(self, player_1 : Player, player_2: Player ):
         choices = [(f"{player_1.firstname} {player_1.lastname} a gagné ", 1.0),
         (f"{player_2.firstname} {player_2.lastname} a gagné ",0.0 ),
-        f"égalité", 0.5]
+        (f"égalité", 0.5)]
         super().__init__(title = "Choix du gagnant", choices = choices)
 
 

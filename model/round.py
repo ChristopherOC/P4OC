@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 from typing import List, Optional
 
 from pydantic import BaseModel, constr
@@ -12,7 +12,9 @@ class Round(BaseModel):
     end_date : datetime  = None
     matchs : List[Match] = []
 
-def play(self):
-    pass
-  
+    def play(self, pick_winner_view_class, player_manager):
+        if not self.end_date:
+            for match in self.matchs :
+                match.play(pick_winner_view_class,player_manager)
+            self.end_date = datetime.today()
 

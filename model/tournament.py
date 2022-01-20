@@ -52,8 +52,8 @@ class Tournament(BaseModel):
             raise ValueError('wrong id')
         return value
 
-    def play(self, pick_winner_view_class):#coder les matchs de tournament, round et match
-        
-        pass
-
- 
+    def play(self, pick_winner_view_class, player_manager):#coder les matchs de tournament, round et match
+        for round in self.rounds :
+            #round.setup pour voir s'il a deja été commencé / pazs de match = aps setup
+            round.play(pick_winner_view_class, player_manager)
+    
