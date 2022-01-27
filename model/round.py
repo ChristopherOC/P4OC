@@ -14,7 +14,11 @@ class Round(BaseModel):
 
     def play(self, pick_winner_view_class, player_manager):
         if not self.end_date:
-            for match in self.matchs :
+            for match in self.matchs:
                 match.play(pick_winner_view_class,player_manager)
             self.end_date = datetime.today()
-
+        # if self.begin_date is None:
+        #     self.begin_date = datetime.today()
+        #     for match in self.matchs:
+        #         match.play(pick_winner_view_class,player_manager)
+        #     self.end_date = datetime.today()

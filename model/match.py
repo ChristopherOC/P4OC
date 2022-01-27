@@ -30,3 +30,12 @@ class Match(BaseModel) :
             if not self.is_played:
                 self.score_player_1 = Result(pick_winner_view_class(player_1 = player_manager.search_by_id(self.id_player_1),
                  player_2 = player_manager.search_by_id(self.id_player_2)).display())
+        
+        def has_player(self,player_id):
+            return player_id in (self.id_player_1, self.id_player_2)
+        
+        def get_player_score(self,player_id):
+            if self.id_player_1 == player_id:
+                return self.score_player_1
+            elif self.score_player_2 == player_id:
+                return self.score_player_2

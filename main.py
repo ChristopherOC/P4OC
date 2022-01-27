@@ -19,8 +19,5 @@ router.add_path("/tournaments/list/current", tournament_list)
 router.add_path("/tournaments/list/pending", pending_tournament)
 
 router.navigate('/')
-#à faire :
-#   jouer les matchs dans les tournois
-        # coder les plays matchs
-#>Nouveau
-#L'enum de fonctionne plus lors de la création d'un joueur
+#Corriger le setup des rounds suivant le premier > fixation de la date
+#pop les joueurs avec moins de score ? > depuis le tournoi ou le match ? 

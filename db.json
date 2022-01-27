@@ -67,37 +67,30 @@
     },
     "tournaments": {
         "1": {
-            "begin_date": "2022-01-19T23:55:58.824930",
+            "begin_date": "2022-01-27T10:13:58.525030",
             "end_date": null,
             "id": 1,
-            "location": "Saint germain",
-            "name": "Test",
+            "location": "orasay",
+            "name": "test",
             "players": [
                 1,
                 2,
                 3,
-                4,
-                5,
-                6
+                4
             ],
             "rounds": [
                 {
-                    "begin_date": "2022-01-19T23:56:29.413467",
-                    "end_date": null,
+                    "begin_date": "2022-01-27T10:14:08.080304",
+                    "end_date": "2022-01-27T10:14:12.639106",
                     "matchs": [
                         {
                             "id_player_1": 1,
-                            "id_player_2": 4,
+                            "id_player_2": 3,
                             "score_player_1": 1.0
                         },
                         {
                             "id_player_1": 2,
-                            "id_player_2": 5,
-                            "score_player_1": 1.0
-                        },
-                        {
-                            "id_player_1": 3,
-                            "id_player_2": 6,
+                            "id_player_2": 4,
                             "score_player_1": 1.0
                         }
                     ],
@@ -105,15 +98,9 @@
                 },
                 {
                     "begin_date": null,
-                    "end_date": null,
+                    "end_date": "2022-01-27T10:14:12.639106",
                     "matchs": [],
                     "name": "Round2"
-                },
-                {
-                    "begin_date": null,
-                    "end_date": null,
-                    "matchs": [],
-                    "name": "Round3"
                 }
             ]
         }
