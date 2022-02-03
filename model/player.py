@@ -1,13 +1,10 @@
 """Création d'un programme ayant pour but d'organiser un tournoi d'échec
 """
-from datetime import datetime, date, timedelta
-from enum import Enum
-from os import error
-
-from pydantic import BaseModel, validator, PositiveInt
-from pydantic.types import conint, constr
+from datetime import date
 
 from gender import Gender
+from pydantic import BaseModel, PositiveInt
+from pydantic.types import conint, constr
 
 
 class Player(BaseModel) :

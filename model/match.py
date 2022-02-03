@@ -1,7 +1,7 @@
 from pydantic import validator
 from pydantic.main import BaseModel
-
 from result import Result
+
 
 class Match(BaseModel) :
 

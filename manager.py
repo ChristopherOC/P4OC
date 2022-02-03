@@ -4,6 +4,7 @@ from typing import List
 from tinydb import TinyDB, table
 from tinydb.table import Document
 
+
 class Manager :
   
     def __init__(self, item_type):

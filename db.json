@@ -67,11 +67,11 @@
     },
     "tournaments": {
         "1": {
-            "begin_date": "2022-01-27T10:13:58.525030",
+            "begin_date": "2022-02-03T09:47:29.793527",
             "end_date": null,
             "id": 1,
-            "location": "orasay",
-            "name": "test",
+            "location": "fgsrtg",
+            "name": "fsergfr",
             "players": [
                 1,
                 2,
@@ -80,25 +80,25 @@
             ],
             "rounds": [
                 {
-                    "begin_date": "2022-01-27T10:14:08.080304",
-                    "end_date": "2022-01-27T10:14:12.639106",
+                    "begin_date": "2022-02-03T09:47:41.352340",
+                    "end_date": null,
                     "matchs": [
                         {
                             "id_player_1": 1,
                             "id_player_2": 3,
-                            "score_player_1": 1.0
+                            "score_player_1": null
                         },
                         {
                             "id_player_1": 2,
                             "id_player_2": 4,
-                            "score_player_1": 1.0
+                            "score_player_1": null
                         }
                     ],
                     "name": "Round1"
                 },
                 {
                     "begin_date": null,
-                    "end_date": "2022-01-27T10:14:12.639106",
+                    "end_date": null,
                     "matchs": [],
                     "name": "Round2"
                 }

@@ -1,7 +1,9 @@
-from pydantic.class_validators import validator
-from player_manager import player_manager as pm
-from model.match import Match
 from random import choice
+
+from pydantic.class_validators import validator
+
+from model.match import Match
+from player_manager import player_manager as pm
 
 
 class Matchmaking:

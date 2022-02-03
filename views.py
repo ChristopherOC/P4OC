@@ -1,17 +1,13 @@
-from datetime import date, datetime
-from typing import Dict, List, Tuple, Any
 import enum
+from datetime import date, datetime
+from typing import Any, Dict, List, Tuple
+
 from gender import Gender
-
 from manager import Manager
-from model.tournament import Tournament
-from tournament_manager import tournament_manager as tm
-from player_manager import player_manager as pm
-
-
 from model.player import Player
-
-
+from model.tournament import Tournament
+from player_manager import player_manager as pm
+from tournament_manager import tournament_manager as tm
 
 
 class View:

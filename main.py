@@ -19,5 +19,3 @@ router.add_path("/tournaments/list/current", tournament_list)
 router.add_path("/tournaments/list/pending", pending_tournament)
 
 router.navigate('/')
-#Corriger le setup des rounds suivant le premier > fixation de la date
-#pop les joueurs avec moins de score ? > depuis le tournoi ou le match ? 

@@ -1,7 +1,8 @@
-from datetime import date, datetime
+from datetime import datetime
 from typing import List, Optional
 
 from pydantic import BaseModel, constr
+
 from model.match import Match
 
 
@@ -22,3 +23,11 @@ class Round(BaseModel):
         #     for match in self.matchs:
         #         match.play(pick_winner_view_class,player_manager)
         #     self.end_date = datetime.today()
+ 
+    def setup_next_round(self,pick_winner_view_class, player_manager):
+        if not self.begin_date:
+            self.begin_date = datetime.today()
+            for match in self.matchs:
+                match.play(pick_winner_view_class, player_manager)
+            self.end_date = datetime.today()   
+    

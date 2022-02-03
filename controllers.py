@@ -1,7 +1,7 @@
 # from play_tournament import PlayTournament
-from router import router
 import views
 from player_manager import player_manager as pm
+from router import router
 from tournament_manager import tournament_manager as tm
 
 
