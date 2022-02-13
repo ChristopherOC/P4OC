@@ -17,17 +17,10 @@ class Round(BaseModel):
         if not self.end_date:
             for match in self.matchs:
                 match.play(pick_winner_view_class,player_manager)
-            self.end_date = datetime.today()
-        # if self.begin_date is None:
-        #     self.begin_date = datetime.today()
-        #     for match in self.matchs:
-        #         match.play(pick_winner_view_class,player_manager)
-        #     self.end_date = datetime.today()
+                self.end_date = datetime.today()
+
+            
+        
  
-    def setup_next_round(self,pick_winner_view_class, player_manager):
-        if not self.begin_date:
-            self.begin_date = datetime.today()
-            for match in self.matchs:
-                match.play(pick_winner_view_class, player_manager)
-            self.end_date = datetime.today()   
+ 
     

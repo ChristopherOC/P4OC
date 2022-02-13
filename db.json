@@ -67,11 +67,11 @@
     },
     "tournaments": {
         "1": {
-            "begin_date": "2022-02-03T09:47:29.793527",
+            "begin_date": "2022-02-10T10:28:54.746094",
             "end_date": null,
             "id": 1,
-            "location": "fgsrtg",
-            "name": "fsergfr",
+            "location": "paris",
+            "name": "test",
             "players": [
                 1,
                 2,
@@ -80,27 +80,55 @@
             ],
             "rounds": [
                 {
-                    "begin_date": "2022-02-03T09:47:41.352340",
-                    "end_date": null,
+                    "begin_date": "2022-02-10T10:29:04.079961",
+                    "end_date": "2022-02-10T10:29:14.760665",
                     "matchs": [
                         {
                             "id_player_1": 1,
                             "id_player_2": 3,
-                            "score_player_1": null
+                            "score_player_1": 1.0
                         },
                         {
                             "id_player_1": 2,
                             "id_player_2": 4,
-                            "score_player_1": null
+                            "score_player_1": 0.0
                         }
                     ],
                     "name": "Round1"
                 },
                 {
-                    "begin_date": null,
-                    "end_date": null,
-                    "matchs": [],
+                    "begin_date": "2022-02-10T10:29:14.760665",
+                    "end_date": "2022-02-10T10:29:17.245023",
+                    "matchs": [
+                        {
+                            "id_player_1": 2,
+                            "id_player_2": 3,
+                            "score_player_1": 0.5
+                        },
+                        {
+                            "id_player_1": 1,
+                            "id_player_2": 4,
+                            "score_player_1": 1.0
+                        }
+                    ],
                     "name": "Round2"
+                },
+                {
+                    "begin_date": "2022-02-10T10:29:17.246025",
+                    "end_date": "2022-02-10T10:29:18.657747",
+                    "matchs": [
+                        {
+                            "id_player_1": 2,
+                            "id_player_2": 3,
+                            "score_player_1": 0.0
+                        },
+                        {
+                            "id_player_1": 4,
+                            "id_player_2": 1,
+                            "score_player_1": 1.0
+                        }
+                    ],
+                    "name": "Round3"
                 }
             ]
         }

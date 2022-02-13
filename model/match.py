@@ -37,5 +37,5 @@ class Match(BaseModel) :
         def get_player_score(self,player_id):
             if self.id_player_1 == player_id:
                 return self.score_player_1
-            elif self.score_player_2 == player_id:
+            elif self.id_player_2 == player_id:
                 return self.score_player_2

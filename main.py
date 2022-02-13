@@ -19,3 +19,6 @@ router.add_path("/tournaments/list/current", tournament_list)
 router.add_path("/tournaments/list/pending", pending_tournament)
 
 router.navigate('/')
+
+#Vérifier si le match est joué
+#Ajouter un type au toiurnoi / blitz / bullet 

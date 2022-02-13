@@ -1,5 +1,6 @@
 from datetime import datetime
 from typing import List
+from unittest import result
 
 from player_manager import player_manager as pm
 from pydantic import BaseModel, validator
@@ -53,30 +54,34 @@ class Tournament(BaseModel):
     def play(self, pick_winner_view_class, player_manager):
         for round_nb, round in enumerate(self.rounds):
             round.play(pick_winner_view_class, player_manager)
-            self.setup_next_round(round_nb)
+            if round_nb < len(self.rounds) - 1:
+                self.setup_next_round(round_nb + 1)
+           
 
     def setup_next_round(self,round_nb: int):
-        players = [pm.search_by_id(player_id)for player_id in self.players]
-        players.sort(key= lambda x: (-self.get_player_score(x.id),-x.rank))
-    #     # Round.setup_next_round()
-    #     group_1 = self.players[:len(self.players)//2]
-    #     group_2 = self.players[len(self.players)//2:]
-    #     self.rounds[round_nb].matchs = [Match(id_player_1=player_1.id, id_player_2=player_2.id) for player_1, player_2 in zip(group_1, group_2)]
+        players = [pm.search_by_id(player_id) for player_id in self.players]
+        players.sort(key= lambda x: (self.get_player_score(x.id),-x.rank))
+        while players :
+            p1 = players.pop(0)
+            p2 = players.pop(0)
+            m = Match(id_player_1=p1.id, id_player_2=p2.id)
+            self.rounds[round_nb].matchs.append(m)
+        self.rounds[round_nb].begin_date = datetime.today()
 
 
     def get_player_score(self,player_id):
         score = 0.0
         for round in self.rounds:
-           
             for match in round.matchs:
-                
                 if match.is_played:
-                    print(type(player_id))
-                    print(match)
                     if match.has_player(player_id):
-                        
-                        print("score avant match : ", score)
                         score += match.get_player_score(player_id).value
-                        print("score après match : ",score)
                         break
         return score
+    
+    @property
+    def matchs(self):
+        results = []
+        for round in self.rounds:
+            for match in round.matchs:
+                if match.has_player(player_id):
