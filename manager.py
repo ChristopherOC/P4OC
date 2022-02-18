@@ -39,7 +39,7 @@ class Manager :
 
     def search_by_id(self,id):
         return self.items[id]
-
+        
     def all(self):
         return list(self.items.values())
   

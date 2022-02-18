@@ -67,7 +67,7 @@
     },
     "tournaments": {
         "1": {
-            "begin_date": "2022-02-10T10:28:54.746094",
+            "begin_date": "2022-02-17T10:22:36.989696",
             "end_date": null,
             "id": 1,
             "location": "paris",
@@ -80,8 +80,8 @@
             ],
             "rounds": [
                 {
-                    "begin_date": "2022-02-10T10:29:04.079961",
-                    "end_date": "2022-02-10T10:29:14.760665",
+                    "begin_date": "2022-02-17T10:22:47.007872",
+                    "end_date": "2022-02-17T10:22:50.372453",
                     "matchs": [
                         {
                             "id_player_1": 1,
@@ -97,13 +97,13 @@
                     "name": "Round1"
                 },
                 {
-                    "begin_date": "2022-02-10T10:29:14.760665",
-                    "end_date": "2022-02-10T10:29:17.245023",
+                    "begin_date": "2022-02-17T10:22:50.372453",
+                    "end_date": "2022-02-17T10:22:52.462692",
                     "matchs": [
                         {
                             "id_player_1": 2,
                             "id_player_2": 3,
-                            "score_player_1": 0.5
+                            "score_player_1": 0.0
                         },
                         {
                             "id_player_1": 1,
@@ -112,25 +112,9 @@
                         }
                     ],
                     "name": "Round2"
-                },
-                {
-                    "begin_date": "2022-02-10T10:29:17.246025",
-                    "end_date": "2022-02-10T10:29:18.657747",
-                    "matchs": [
-                        {
-                            "id_player_1": 2,
-                            "id_player_2": 3,
-                            "score_player_1": 0.0
-                        },
-                        {
-                            "id_player_1": 4,
-                            "id_player_2": 1,
-                            "score_player_1": 1.0
-                        }
-                    ],
-                    "name": "Round3"
                 }
-            ]
+            ],
+            "tournament_type": "Bullet"
         }
     }
 }

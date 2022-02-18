@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import List
-from unittest import result
+
 
 from player_manager import player_manager as pm
 from pydantic import BaseModel, validator
@@ -8,6 +8,7 @@ from pydantic.types import PositiveInt, constr
 
 from model.match import Match
 from model.round import Round
+from tournament_type import TournamentType
 
 
 class Tournament(BaseModel):
@@ -19,6 +20,7 @@ class Tournament(BaseModel):
     rounds : List[Round] = []
     players : List[PositiveInt]
     id : PositiveInt
+    tournament_type : TournamentType
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -51,11 +53,12 @@ class Tournament(BaseModel):
             raise ValueError('wrong id')
         return value
 
-    def play(self, pick_winner_view_class, player_manager):
+    def play(self, pick_winner_view_class):
         for round_nb, round in enumerate(self.rounds):
-            round.play(pick_winner_view_class, player_manager)
+            round.play(pick_winner_view_class)
             if round_nb < len(self.rounds) - 1:
                 self.setup_next_round(round_nb + 1)
+        self.end_date = datetime.today()
            
 
     def setup_next_round(self,round_nb: int):
@@ -63,9 +66,16 @@ class Tournament(BaseModel):
         players.sort(key= lambda x: (self.get_player_score(x.id),-x.rank))
         while players :
             p1 = players.pop(0)
-            p2 = players.pop(0)
-            m = Match(id_player_1=p1.id, id_player_2=p2.id)
-            self.rounds[round_nb].matchs.append(m)
+    
+            for p2 in players:
+                m = Match(id_player_1=p1.id, id_player_2=p2.id)
+                if m not in self.matchs:
+                    p2 = players.pop(0)
+                    self.rounds[round_nb].matchs.append(m)
+                    break
+            else :
+                p2 = players.pop(0)
+                m = Match(id_player_1=p1.id, id_player_2=p2.id)
         self.rounds[round_nb].begin_date = datetime.today()
 
 
@@ -84,4 +94,6 @@ class Tournament(BaseModel):
         results = []
         for round in self.rounds:
             for match in round.matchs:
-                if match.has_player(player_id):
+                    results.append(match)
+        return results
+                

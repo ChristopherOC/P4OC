@@ -1,6 +1,7 @@
 from pydantic import validator
 from pydantic.main import BaseModel
 from result import Result
+from player_manager import player_manager as pm
 
 
 class Match(BaseModel) :
@@ -26,10 +27,10 @@ class Match(BaseModel) :
         def is_played(self):
             return self.score_player_1 is not None
 
-        def play(self, pick_winner_view_class, player_manager):
+        def play(self, pick_winner_view_class):
             if not self.is_played:
-                self.score_player_1 = Result(pick_winner_view_class(player_1 = player_manager.search_by_id(self.id_player_1),
-                 player_2 = player_manager.search_by_id(self.id_player_2)).display())
+                self.score_player_1 = Result(pick_winner_view_class(player_1 = pm.search_by_id(self.id_player_1),
+                 player_2 = pm.search_by_id(self.id_player_2)).display())
         
         def has_player(self,player_id):
             return player_id in (self.id_player_1, self.id_player_2)
@@ -39,3 +40,6 @@ class Match(BaseModel) :
                 return self.score_player_1
             elif self.id_player_2 == player_id:
                 return self.score_player_2
+
+        def __str__(self) -> str:
+            return f''

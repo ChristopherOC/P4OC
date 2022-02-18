@@ -13,10 +13,11 @@ class Round(BaseModel):
     end_date : datetime  = None
     matchs : List[Match] = []
 
-    def play(self, pick_winner_view_class, player_manager):
+    def play(self, pick_winner_view_class):
         if not self.end_date:
             for match in self.matchs:
-                match.play(pick_winner_view_class,player_manager)
+                match.play(pick_winner_view_class)
+
                 self.end_date = datetime.today()
 
             

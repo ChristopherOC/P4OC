@@ -8,6 +8,7 @@ from model.player import Player
 from model.tournament import Tournament
 from player_manager import player_manager as pm
 from tournament_manager import tournament_manager as tm
+from tournament_type import TournamentType
 
 
 class View:
@@ -118,6 +119,11 @@ class GenderMenu(EnumMenu):
         super().__init__("",Gender)
 
 
+class TournamentTypeMenu(EnumMenu):
+    def __init__(self):
+        
+        super().__init__("",TournamentType)
+
 
 class TournamentMenu(Menu):#Menu du tournoi
     def __init__(self):
@@ -136,6 +142,7 @@ class FormTournament(Form): #Formulaire d'un tournoi
         super().__init__(title = "Formulaire du tournoi", fields=[
             ('name','le nom du tournoi', str),
             ('location','le lieu du tournoi', str),
+            ('tournament_type','type de tournoi', TournamentTypeMenu),
             ("number_of_players", "Nombre de joueur",int),
             ("number_of_rounds", "Nombre de rounds", int)])
         
@@ -145,7 +152,7 @@ class FormTournament(Form): #Formulaire d'un tournoi
         return data
 
 
-class PendingTournament(Form): #Process data pour la date renseignée 
+class PendingTournament(Form): 
     def __init__(self):
         super().__init__(title = "Reprise du tournoi", fields = [("end_date_year", "année de fin du tournoi", str),
         ("end_date_month", "mois de fin du tournoi",str),
@@ -165,7 +172,7 @@ class PickTournament(Menu):
             
             
 class PickWinner(Menu):#a terminer
-    def __init__(self, player_1 : Player, player_2: Player ):
+    def __init__(self, player_1 : Player, player_2: Player):
         choices = [(f"{player_1.firstname} {player_1.lastname} a gagné ", 1.0),
         (f"{player_2.firstname} {player_2.lastname} a gagné ",0.0 ),
         (f"égalité", 0.5)]
