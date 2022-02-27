@@ -17,8 +17,17 @@ router.add_path("/tournaments", tournaments_controller)
 router.add_path("/tournament/add", create_tournament)
 router.add_path("/tournaments/list/current", tournament_list)
 router.add_path("/tournaments/list/pending", pending_tournament)
+router.add_path("/tournaments/reports", tournament_report)
 
 router.navigate('/')
 
-#Vérifier si le match est joué
-#Ajouter un type au toiurnoi / blitz / bullet   
+
+"""
+Raport de tournoi :
+    * Lister les joueurs du tournoi par ordre alphabétique
+    * Lister les joueurs du tournoi par score
+    * Lister les tours d'un tournoi (round)*
+    * Lister les matchs d'un tournoi (utilisation fstring)
+
+Afficher le nom du round
+""" 

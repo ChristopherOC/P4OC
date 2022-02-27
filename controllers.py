@@ -1,4 +1,3 @@
-# from play_tournament import PlayTournament
 import views
 from player_manager import player_manager as pm
 from router import router
@@ -53,7 +52,13 @@ def tournament_list():
 def pending_tournament(): #Boucler tant que c'est pas bon 
     tournament_id = views.PickTournament("Pending Tournament", tm.search(filter_key= lambda x: x.end_date == None)).display()
     tournament = tm.search_by_id(tournament_id)
-    tournament.play(pick_winner_view_class = views.PickWinner,player_manager = pm)
+    tournament.play(pick_winner_view_class = views.PickWinner)
     tm.save_item(tournament.id)
     router.navigate("/tournaments")
+
+def tournament_report():
+    tournamernt_id = views.PickTournament("Liste des tournois", tm.all()).display()
+    tournament = tm.search(tournamernt_id)
+    views.TournamentReport(tournament)
+
 

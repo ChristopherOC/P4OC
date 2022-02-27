@@ -33,7 +33,7 @@ class Manager :
             
     
 
-    def search(self,filter_key = lambda x: x, sort_key = lambda x: x):
+    def search(self,filter_key = lambda x: x, sort_key = lambda x: x.id):
         # print(self.items)
         return list(sorted(filter(filter_key,self.items.values()),key = sort_key))
 

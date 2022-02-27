@@ -3,11 +3,11 @@ from datetime import date, datetime
 from typing import Any, Dict, List, Tuple
 
 from gender import Gender
-from manager import Manager
+
 from model.player import Player
 from model.tournament import Tournament
 from player_manager import player_manager as pm
-from tournament_manager import tournament_manager as tm
+
 from tournament_type import TournamentType
 
 
@@ -131,6 +131,7 @@ class TournamentMenu(Menu):#Menu du tournoi
         [("Liste des tournois en cours","/tournaments/list/current"),
         ("Créer un nouveau tournoi", "/tournament/add"),
         ("Reprendre un tournoi", "/tournaments/list/pending"),
+        ("Rapport des tournois", "/tournaments/reports"),
         ("Retour","/")])
 
     def process_data(self, data : Dict):
@@ -150,6 +151,12 @@ class FormTournament(Form): #Formulaire d'un tournoi
         data["players"] = [PickPlayer(pm.all()).display() for _ in range(data["number_of_players"])]
         data["rounds"] = [{"name" : f'Round{round_nb}',"begin_date" : datetime.today() if round_nb == 1 else None} for round_nb in range(1,data["number_of_rounds"]+1)]
         return data
+
+
+class TournamentReport(Menu):
+    def __init__(self, title: str, choices: List[Tuple[str, Any]]):
+        super().__init__(title, choices)
+        print("test")
 
 
 class PendingTournament(Form): 
