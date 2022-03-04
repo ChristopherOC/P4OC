@@ -1,5 +1,6 @@
 import enum
 from datetime import date, datetime
+import os
 from typing import Any, Dict, List, Tuple
 
 from gender import Gender
@@ -7,6 +8,7 @@ from gender import Gender
 from model.player import Player
 from model.tournament import Tournament
 from player_manager import player_manager as pm
+from tournament_manager import tournament_manager as tm
 
 from tournament_type import TournamentType
 
@@ -21,7 +23,7 @@ class View:
 
     def display(self):#Affichage de la séparation + efface la console lors de l'exécution
         if self.title: 
-            # os.system('cls')
+            os.system('cls')
             print(self.title)
             print('*' * len(self.title))
         print(self.content)
@@ -153,11 +155,19 @@ class FormTournament(Form): #Formulaire d'un tournoi
         return data
 
 
-class TournamentReport(Menu):
-    def __init__(self, title: str, choices: List[Tuple[str, Any]]):
-        super().__init__(title, choices)
-        print("test")
+class TournamentReport(View):
+    def __init__(self, tournament):
+        repport = ""
+        repport += f"Nom du tournoi : {tournament.name}\n"
+        repport += f"Liste des joueurs du tournoi : { ' | '.join([str(pm.search_by_id(player_id)) for player_id in tournament.players])}\n"
 
+        for rnd in tournament.rounds :
+            repport += rnd.name + "\n"
+            for mtch in rnd.matchs:
+                repport += "\t" + str(mtch) +"\n"
+
+        super().__init__(title="Rapport du tournoi",blocking= True, content=repport)
+        
 
 class PendingTournament(Form): 
     def __init__(self):
@@ -178,7 +188,7 @@ class PickTournament(Menu):
             super().__init__(title, choices)
             
             
-class PickWinner(Menu):#a terminer
+class PickWinner(Menu):
     def __init__(self, player_1 : Player, player_2: Player):
         choices = [(f"{player_1.firstname} {player_1.lastname} a gagné ", 1.0),
         (f"{player_2.firstname} {player_2.lastname} a gagné ",0.0 ),

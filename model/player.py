@@ -16,7 +16,7 @@ class Player(BaseModel) :
     id : PositiveInt 
     
     def __str__(self) -> str:
-        return f'{self.firstname},{self.lastname},{self.rank}'
+        return f'{self.lastname.upper()} {self.firstname} ({self.rank})'
 
 
 

@@ -67,11 +67,11 @@
     },
     "tournaments": {
         "1": {
-            "begin_date": "2022-02-17T10:22:36.989696",
-            "end_date": null,
+            "begin_date": "2022-03-01T23:57:16.018723",
+            "end_date": "2022-03-01T23:59:56.630244",
             "id": 1,
-            "location": "paris",
-            "name": "test",
+            "location": "Paris",
+            "name": "Test",
             "players": [
                 1,
                 2,
@@ -80,8 +80,8 @@
             ],
             "rounds": [
                 {
-                    "begin_date": "2022-02-17T10:22:47.007872",
-                    "end_date": "2022-02-17T10:22:50.372453",
+                    "begin_date": "2022-03-01T23:57:35.697589",
+                    "end_date": "2022-03-01T23:59:53.193262",
                     "matchs": [
                         {
                             "id_player_1": 1,
@@ -97,8 +97,8 @@
                     "name": "Round1"
                 },
                 {
-                    "begin_date": "2022-02-17T10:22:50.372453",
-                    "end_date": "2022-02-17T10:22:52.462692",
+                    "begin_date": "2022-03-01T23:59:53.193262",
+                    "end_date": "2022-03-01T23:59:56.630244",
                     "matchs": [
                         {
                             "id_player_1": 2,
@@ -117,43 +117,83 @@
             "tournament_type": "Bullet"
         },
         "2": {
-            "begin_date": "2022-02-23T23:04:58.172509",
-            "end_date": null,
+            "begin_date": "2022-03-01T23:57:16.018723",
+            "end_date": "2022-03-02T00:00:10.005877",
             "id": 2,
-            "location": "ERZTSGGV",
-            "name": "tezQ",
+            "location": "Orsay",
+            "name": "Multiple",
             "players": [
                 1,
                 2,
                 3,
-                4
+                4,
+                5,
+                6
             ],
             "rounds": [
                 {
-                    "begin_date": "2022-02-23T23:05:15.532687",
-                    "end_date": null,
+                    "begin_date": "2022-03-01T23:57:55.720196",
+                    "end_date": "2022-03-02T00:00:06.458606",
                     "matchs": [
                         {
                             "id_player_1": 1,
-                            "id_player_2": 3,
-                            "score_player_1": null
+                            "id_player_2": 4,
+                            "score_player_1": 0.0
                         },
                         {
                             "id_player_1": 2,
-                            "id_player_2": 4,
-                            "score_player_1": null
+                            "id_player_2": 5,
+                            "score_player_1": 1.0
+                        },
+                        {
+                            "id_player_1": 3,
+                            "id_player_2": 6,
+                            "score_player_1": 1.0
                         }
                     ],
                     "name": "Round1"
                 },
                 {
-                    "begin_date": null,
-                    "end_date": null,
-                    "matchs": [],
+                    "begin_date": "2022-03-02T00:00:06.458606",
+                    "end_date": "2022-03-02T00:00:08.649388",
+                    "matchs": [
+                        {
+                            "id_player_1": 1,
+                            "id_player_2": 5,
+                            "score_player_1": 1.0
+                        },
+                        {
+                            "id_player_1": 6,
+                            "id_player_2": 2,
+                            "score_player_1": 1.0
+                        },
+                        {
+                            "id_player_1": 3,
+                            "id_player_2": 4,
+                            "score_player_1": 1.0
+                        }
+                    ],
                     "name": "Round2"
+                },
+                {
+                    "begin_date": "2022-03-02T00:00:08.649388",
+                    "end_date": "2022-03-02T00:00:10.005877",
+                    "matchs": [
+                        {
+                            "id_player_1": 5,
+                            "id_player_2": 4,
+                            "score_player_1": 1.0
+                        },
+                        {
+                            "id_player_1": 2,
+                            "id_player_2": 4,
+                            "score_player_1": 1.0
+                        }
+                    ],
+                    "name": "Round3"
                 }
             ],
-            "tournament_type": "Bullet"
+            "tournament_type": "Blitz"
         }
     }
 }

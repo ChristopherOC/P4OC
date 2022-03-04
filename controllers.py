@@ -49,7 +49,7 @@ def tournament_list():
     views.ListView("Tournament", tm.all()).display()
     router.navigate("/tournaments") 
 
-def pending_tournament(): #Boucler tant que c'est pas bon 
+def pending_tournament(): 
     tournament_id = views.PickTournament("Pending Tournament", tm.search(filter_key= lambda x: x.end_date == None)).display()
     tournament = tm.search_by_id(tournament_id)
     tournament.play(pick_winner_view_class = views.PickWinner)
@@ -57,8 +57,9 @@ def pending_tournament(): #Boucler tant que c'est pas bon
     router.navigate("/tournaments")
 
 def tournament_report():
-    tournamernt_id = views.PickTournament("Liste des tournois", tm.all()).display()
-    tournament = tm.search(tournamernt_id)
-    views.TournamentReport(tournament)
+    tournamernt_id = views.PickTournament("Rapport des tournois", tm.all()).display()
+    tournament = tm.search_by_id(tournamernt_id)
+    views.TournamentReport(tournament).display()
+    router.navigate("/tournaments")
 
 

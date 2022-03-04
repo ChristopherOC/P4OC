@@ -16,12 +16,8 @@ class Round(BaseModel):
     def play(self, pick_winner_view_class):
         if not self.end_date:
             for match in self.matchs:
+                print("Round :",self.name)
                 match.play(pick_winner_view_class)
 
                 self.end_date = datetime.today()
-
-            
-        
- 
- 
     

@@ -20,14 +20,3 @@ router.add_path("/tournaments/list/pending", pending_tournament)
 router.add_path("/tournaments/reports", tournament_report)
 
 router.navigate('/')
-
-
-"""
-Raport de tournoi :
-    * Lister les joueurs du tournoi par ordre alphabétique
-    * Lister les joueurs du tournoi par score
-    * Lister les tours d'un tournoi (round)*
-    * Lister les matchs d'un tournoi (utilisation fstring)
-
-Afficher le nom du round
-""" 

@@ -42,4 +42,9 @@ class Match(BaseModel) :
                 return self.score_player_2
 
         def __str__(self) -> str:
-            return f''
+            res = 'égalité'
+            if self.score_player_1 == Result.Win:
+                res = "1 a gagné"
+            elif self.score_player_2 == Result.Win:
+                res = '2 a gagné'
+            return f'{str(pm.search_by_id(self.id_player_1))} VS {str(pm.search_by_id(self.id_player_2))} ({res}) '
