@@ -46,7 +46,7 @@ def create_tournament():#create
     router.navigate("/tournaments") 
 
 def tournament_list():
-    views.ListView("Tournament", tm.all()).display()
+    views.ListView("Tournament", tm.search(lambda x : x.end_date == None)).display()
     router.navigate("/tournaments") 
 
 def pending_tournament(): 
