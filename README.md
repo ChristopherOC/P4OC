@@ -39,4 +39,8 @@ Une fois cela fait, tapez la commande suivante dans votre console pour installer
 ```bash
 pip3 install -r requirements.txt
 ```
+Pour générer un rapport flake8 : 
+```bash
+flake8 --max-line-length 119 --format html --htmldir flake8-report --exclude .git,__pycache__,venv,docs -v
+```
 Vous pouvez désormais faire fonctionner le programme CHESSMAKER.
