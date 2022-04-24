@@ -14,7 +14,7 @@ class Manager:
         for item_data in self.table:
             self.create(**item_data)
 
-    def create(self, save=False, **kwargs):
+    def create(self, save=False, **kwargs):  # Ajout de données à la base de donnée
         if "id" not in kwargs:
             kwargs["id"] = self.get_next_id()
 
@@ -24,22 +24,23 @@ class Manager:
             self.save_item(item.id)
         return item
 
-    def get_next_id(self):
+    def get_next_id(self):  # Récupère l'id suivant dans la base de donnée
         try:
             return self.table.all()[-1].doc_id + 1
         except IndexError:
             return 1
 
-    def search(self, filter_key=lambda x: x, sort_key=lambda x: x.id):
-        return list(sorted(filter(filter_key,self.items.values()), 
-         key=sort_key))
+    def search(self, filter_key=lambda x: x,
+                sort_key=lambda x: x.id):  # Accède aux données voulues dans la base de donnée de façon générique
+        return list(sorted(filter(filter_key, self.items.values()),
+                    key=sort_key))
 
-    def search_by_id(self, id):
+    def search_by_id(self, id):  # Recherche par ID
         return self.items[id]
 
-    def all(self):
+    def all(self):  # Retourne toute les données voulues
         return list(self.items.values())
 
-    def save_item(self, id):
+    def save_item(self, id):  # Permet de sauvegarder une nouvelle donnée en écrasant l'ancienne
         item = self.search_by_id(id)
         self.table.upsert(Document(json.loads(item.json()), doc_id=id))

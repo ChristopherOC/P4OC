@@ -8,58 +8,63 @@ def main_controller():
     router.navigate(views.MainMenu().display())
 
 
-#For the players
+# For the players
 def players_controller():
     router.navigate(views.PlayerMenu().display())
 
 
-def player_form():
+def player_form():  # Formulaire de création d'un joueur
     form_data = views.FormPlayer().display()
-    pm.create(save= True, **form_data)
+    pm.create(save=True, **form_data)
     router.navigate("/players")
 
 
-def list_players_by_name():
-    views.ListView("Players",pm.search(sort_key = lambda x: x.lastname)).display() 
+def list_players_by_name():  # Liste les joueurs par ordre alphabétique
+    views.ListView("Players", pm.search(sort_ke=lambda x: x.lastname)).display()
     router.navigate("/players")
 
 
-def list_players_by_rank():
-    views.ListView("Players",pm.search(sort_key = lambda x: -x.rank)).display() 
+def list_players_by_rank():  # Liste les joueurs par rang
+    views.ListView("Players", pm.search(sort_key=lambda x: -x.rank)).display()
     router.navigate("/players")
 
-def update_player_rank():
-    player_id = views.PickPlayer(pm.search(sort_key= lambda x: x.rank)).display()
+
+def update_player_rank():  # Modifie le rang d'un joueur
+    player_id = views.PickPlayer(pm.search(sort_key=lambda x: x.rank)).display()
     player = pm.search_by_id(player_id)
     form_data = views.UpdatePlayer().display()
     player.rank = form_data["rank"]
     pm.save_item(player_id)
     router.navigate("/players")
 
+
 # For the tournament
 def tournaments_controller():
     router.navigate(views.TournamentMenu().display())
 
-def create_tournament():#create
+
+def create_tournament():  # Permet de créer un tournoi
     form_data = views.FormTournament().display()
-    print(tm.create(save= True, **form_data))
-    router.navigate("/tournaments") 
+    print(tm.create(save=True, **form_data))
+    router.navigate("/tournaments")
 
-def tournament_list():
-    views.ListView("Tournament", tm.search(lambda x : x.end_date == None)).display()
-    router.navigate("/tournaments") 
 
-def pending_tournament(): 
-    tournament_id = views.PickTournament("Pending Tournament", tm.search(filter_key= lambda x: x.end_date == None)).display()
+def tournament_list():  # Permet d'accéder à la liste des tournois en cours
+    views.ListView("Tournament", tm.search(lambda x: x.end_date == None)).display()
+    router.navigate("/tournaments")
+
+
+def pending_tournament():  # Permet d'accéder aux tournois en cours afin de les jouer
+    tournament_id = views.PickTournament("Pending Tournament",
+                                            tm.search(filter_key=lambda x: x.end_date == None)).display()
     tournament = tm.search_by_id(tournament_id)
-    tournament.play(pick_winner_view_class = views.PickWinner)
+    tournament.play(pick_winner_view_class=views.PickWinner)
     tm.save_item(tournament.id)
     router.navigate("/tournaments")
 
-def tournament_report():
+
+def tournament_report():  # Génère un rapport du tournoi
     tournamernt_id = views.PickTournament("Rapport des tournois", tm.all()).display()
     tournament = tm.search_by_id(tournamernt_id)
     views.TournamentReport(tournament).display()
     router.navigate("/tournaments")
-
-
