@@ -7,17 +7,18 @@ git clone https://github.com/ChristopherOC/P4OC.git
 Placez vous dans le dossier P4OC, puis créez un nouvel environnement virtuel:
 
 python -m venv env
-Ensuite, activez-le. Windows:
+Ensuite, activez-le.
 
+Windows:
 env\scripts\activate.bat
+
 Linux:
-
 source env/bin/activate
+
 Il ne reste plus qu'à installer les packages requis:
-
 pip install -r requirements.txt
-Vous pouvez ensuite lancer le programme:
 
+Vous pouvez ensuite lancer le programme:
 python main.py
 
 
