@@ -6,7 +6,7 @@ from pydantic import BaseModel, constr
 from model.match import Match
 
 
-class Round(BaseModel):
+class Round(BaseModel):  # Défini des règles pour créer un round
 
     name: constr(strict=True, min_length=1, max_length=15)
     begin_date: Optional[datetime] = datetime.today()

@@ -2,12 +2,12 @@
 """
 from datetime import date
 
-from gender import Gender
+from controllers_files.gender import Gender
 from pydantic import BaseModel, PositiveInt
 from pydantic.types import conint, constr
 
 
-class Player(BaseModel):
+class Player(BaseModel):  # Défini les paramètres auxquels un joueur doit se conformer
     lastname: constr(strict=True, regex="^[A-Za-z '\-éèàçê]{2,25}$")
     firstname: constr(strict=True, regex="^[A-Za-z '\-éèàçê]{2,25}$")
     birthdate: date
