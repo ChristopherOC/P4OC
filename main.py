@@ -1,5 +1,5 @@
-from controllers import *
-from router import router
+from controllers_files.controllers import *
+from controllers_files.router import router
 
 
 # Navigation router
