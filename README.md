@@ -23,11 +23,14 @@ python main.py
 Pour générer le rapport Flake8
 Installez flake8 avec la commande:
 pip intall flake8-html
+
 S'il n'existe pas, créer un fichier setup.cfg
 Ecrire le texte suivant dedans:
 [flake8]
+
 exclude = .git, env, __pycache__, .gitignore
 max-line-length = 119
+
 Tapez la commande:
 flake8 --format=html --htmldir=flake-report
 Le rapport sera généré dans le dossier flake8.
