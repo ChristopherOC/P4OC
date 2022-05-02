@@ -26,9 +26,7 @@ pip intall flake8-html
 
 S'il n'existe pas, créer un fichier setup.cfg
 Ecrire le texte suivant dedans:
-[flake8]
-
-exclude = .git, env, __pycache__, .gitignore
+[flake8]exclude = .git, env, __pycache__, .gitignore
 max-line-length = 119
 
 Tapez la commande:
